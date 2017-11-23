@@ -1,3 +1,3 @@
 # Daftar Isi
 
-* [Penggunaan Git](git/index.md)
+* [Penggunaan Git](git/rule.md)
