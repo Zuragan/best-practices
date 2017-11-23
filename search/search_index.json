@@ -1,0 +1,194 @@
+{
+    "docs": [
+        {
+            "location": "/",
+            "text": "Daftar Isi\n\n\n\n\nPenggunaan Git",
+            "title": "Beranda"
+        },
+        {
+            "location": "/#daftar-isi",
+            "text": "Penggunaan Git",
+            "title": "Daftar Isi"
+        },
+        {
+            "location": "/git/rule/",
+            "text": "Roles\n\n\n\n\nDeveloper\n\n\nmenulis kode\n\n\nmembuat pull/merge request\n\n\n\n\n\n\nMaintainer\n\n\nmengintegrasikan kode yang siap di merge dari feature branch ke master branch\n\n\nmelakukan tagging untuk versi yang siap di deploy ke production\n\n\n\n\n\n\nReviewer\n\n\nreview kode",
+            "title": "Basic Rule"
+        },
+        {
+            "location": "/git/rule/#roles",
+            "text": "Developer  menulis kode  membuat pull/merge request    Maintainer  mengintegrasikan kode yang siap di merge dari feature branch ke master branch  melakukan tagging untuk versi yang siap di deploy ke production    Reviewer  review kode",
+            "title": "Roles"
+        },
+        {
+            "location": "/git/concept/",
+            "text": "Branching\n\n\nSeperti source control pada umumnya, git memiliki fitur branching. Artinya perubahan versi source code dapat bercabang. Perubahan pada satu cabang tidak akan berpengaruh pada cabang lainnya sampai dilakukan \nmerge\n atau \nrebase\n.\n\n\nCanonical/Master Branch\n\n\n\n\nMaster -> shared development branch, tidak boleh langsung push ke branch master\n\n\nBranch master selalu dijadikan sebagai reference (upstream)\n\n\nBranch master yang stable akan di-tag\n\n\nTag production akan di deploy ke production\n\n\n\n\nFeature Branch\n\n\n\n\nSetiap developer ketika mendapat task untuk fitur baru harus membuat feature branch baru\n\n\nPerubahan yang terjadi pada feature branch ini sangat disarankan untuk fokus dan komplit untuk satu perubahan.\n\n\nPrinsip \natomic\n: satu fitur yang lengkap dan tidak mengganggu fitur lain\n\n\nBila diperlukan untuk mengubah modul lain yang berkaitan maka tidak apa-apa\n\n\nBila ditemukan bug/perubahan fitur di modul lain yang tidak ada hubungannya maka kerjakan di branch yang lain.\n\n\n\n\n\n\nKetika feature branch akan di-merge ke master melalui proses merge request dan review.\n\n\n\n\n\n\nIlustrasi: Branch master dan fitur\n\n\nMerge\n\n\nProses \nmerge\n adalah proses menggabungkan versi source code dari satu cabang ke cabang yang lain, sehingga branch/cabang \ntarget\n akan memiliki perubahan yang sama dengan branch \nsource\n.\n\n\nSebagai \nbest practice\n selalu gunakan aturan berikut:\n\n\n\n\nmaster\n branch sebagai target branch\n\n\nfeature\n branch sebagai source branch\n\n\n\n\nContoh (command line merge):\n\n\n~$ git checkout master #master sebagai target branch yang kita checkout\n~$ git merge feature #feature sebagai source branch yang bi merge ke master branch\n\n\n\n\nLebih lanjut untuk metode \nmerge\n dibahas di \nsini\n.\n\n\nRebase\n\n\nPoses \nrebase\n adalah proses menggeser/mengupdate \nbase\n dari cabang/branch, sehingga branch yang sedang aktif akan terupdate dari branch source, tapi, kebalikan dari proses \nmerge\n, bukan ditambah di depan branch target, tetapi digeser \nbase\n dari branch target. Sehingga di branch yang baru akan memuat histori perubahan yang sama dengan branch source, hanya saja ada tambahan di depannya.\n\n\nSebagai \nbest practice\n, aturannya adalah:\n\n\n\n\ngunakan \nmaster\n branch sebagai source branch\n\n\ngunakan \nfeature\n branch sebaga target branch\n\n\n\n\nContoh (command line rebase):\n\n\n~$ git checkout feature #feature sebagai target branch yang kita checkout\n~$ git pull --rebase origin master #pull rebase langsung dari remote master\n\n\n\n\nLebih lanjut untuk proses \nrebase\n ada di \nsini\n.",
+            "title": "Konsep"
+        },
+        {
+            "location": "/git/concept/#branching",
+            "text": "Seperti source control pada umumnya, git memiliki fitur branching. Artinya perubahan versi source code dapat bercabang. Perubahan pada satu cabang tidak akan berpengaruh pada cabang lainnya sampai dilakukan  merge  atau  rebase .",
+            "title": "Branching"
+        },
+        {
+            "location": "/git/concept/#canonicalmaster-branch",
+            "text": "Master -> shared development branch, tidak boleh langsung push ke branch master  Branch master selalu dijadikan sebagai reference (upstream)  Branch master yang stable akan di-tag  Tag production akan di deploy ke production",
+            "title": "Canonical/Master Branch"
+        },
+        {
+            "location": "/git/concept/#feature-branch",
+            "text": "Setiap developer ketika mendapat task untuk fitur baru harus membuat feature branch baru  Perubahan yang terjadi pada feature branch ini sangat disarankan untuk fokus dan komplit untuk satu perubahan.  Prinsip  atomic : satu fitur yang lengkap dan tidak mengganggu fitur lain  Bila diperlukan untuk mengubah modul lain yang berkaitan maka tidak apa-apa  Bila ditemukan bug/perubahan fitur di modul lain yang tidak ada hubungannya maka kerjakan di branch yang lain.    Ketika feature branch akan di-merge ke master melalui proses merge request dan review.    Ilustrasi: Branch master dan fitur",
+            "title": "Feature Branch"
+        },
+        {
+            "location": "/git/concept/#merge",
+            "text": "Proses  merge  adalah proses menggabungkan versi source code dari satu cabang ke cabang yang lain, sehingga branch/cabang  target  akan memiliki perubahan yang sama dengan branch  source .  Sebagai  best practice  selalu gunakan aturan berikut:   master  branch sebagai target branch  feature  branch sebagai source branch   Contoh (command line merge):  ~$ git checkout master #master sebagai target branch yang kita checkout\n~$ git merge feature #feature sebagai source branch yang bi merge ke master branch  Lebih lanjut untuk metode  merge  dibahas di  sini .",
+            "title": "Merge"
+        },
+        {
+            "location": "/git/concept/#rebase",
+            "text": "Poses  rebase  adalah proses menggeser/mengupdate  base  dari cabang/branch, sehingga branch yang sedang aktif akan terupdate dari branch source, tapi, kebalikan dari proses  merge , bukan ditambah di depan branch target, tetapi digeser  base  dari branch target. Sehingga di branch yang baru akan memuat histori perubahan yang sama dengan branch source, hanya saja ada tambahan di depannya.  Sebagai  best practice , aturannya adalah:   gunakan  master  branch sebagai source branch  gunakan  feature  branch sebaga target branch   Contoh (command line rebase):  ~$ git checkout feature #feature sebagai target branch yang kita checkout\n~$ git pull --rebase origin master #pull rebase langsung dari remote master  Lebih lanjut untuk proses  rebase  ada di  sini .",
+            "title": "Rebase"
+        },
+        {
+            "location": "/git/development/",
+            "text": "Flow\n\n\n\n\nKeterangan: flow merge request dan pengerjaan fitur\n\n\nFetch & Rebase Master\n\n\n\n\nPastikan repo lokal \nclean\n, tidak ada perubahan yang belum di commit. Cek status repo lokal dengan perintah:\n\n\n\n\n~$ git status\n\n\n\n\n\n\nCek dan pastikan ada di branch master dengan perintah\n\n\n\n\n~$ git branch\n\n\n\n\n\n\nKalau belum, pindah ke branch \nmaster\n menggunakan perintah:\n\n\n\n\n~$ git checkout master\n\n\n\n\n\n\nFetch dan rebase, gunakan perintah:\n\n\n\n\n~$ git pull --rebase origin master\n\n\n\n\nBuat branch baru dan checkout di lokal\n\n\n\n\nBuat branch baru dengan menggunakan perintah\n\n\n\n\n~$ git checkout -b nama-fitur\n\n\n\n\nEdit file & commit lokal\n\n\n\n\nLakukan edit pada file yang dikerjakan, ketika sudah selesai satu fitur lakukan commit\n\n\n\n\n~$ git add nama_file #menambahkan nama_file yang akan di commit\n~$ git commit #commit di repo lokal\n\n\n\n\natau jika akan menambahkan semua file yang sudah di edit untuk di commit:\n\n\n~$ git add . #menambahkan semua yang telah di edit untuk di commit\n~$ git commit #commit di repo lokal\n\n\n\n\n\n\n\n\nAkan secara otomatis muncul text editor untuk menuliskan \nCOMMIT_EDITMSG\n, yaitu keterangan commit, berikan keterangan singkat dan jelas mengenai apa yang diubah di dalam commit tersebut, misal deskripsi fitur atau deskripsi bug yang di-solve.\n\n\n\n\n\n\nLakukan rebase lagi memastikan repo lokal terupdate.\n\n\n\n\n\n\n~$ git pull --rebase origin master\n\n\n\n\nBila terjadi konflik\n\n\nKetika proses rebase, ada kemungkinan terjadi conflict jika ada update di branch \nmaster\n di file yang sama dengan local feature branch.\n\n\n\n\nKeterangan:\n\n\n\n\nFile warna hijau adalah file yang sudah berhasil di 3-way merge secara otomatis oleh git, atau yang sudah di-resolve konfliknya secara manual dan dimasukkan ke commit stage dengan \ngit add nama_file\n\n\nFile warna merah adalah file yang di dalamnya masih ada konflik yang belum di-resolve.\n\n\nStatus konflik bisa dicek dengan perintah \ngit status\n.\n\n\n\n\nJika konflik terjadi, maka:\n\n\n\n\nLakukan resolve conflict secara manual di lokal (untuk file yang di highlight warna merah).\n\n\nGunakan perintah \ngit add nama-file-konflik\n atau \nnama-file-konflik\n bisa diganti dengan \n.\n jika akan memasukkan semua file yang sudah di-resolve.\n\n\nKemudian gunakan perintah \ngit rebase --continue\n untuk melanjutkan proses rebase.\n\n\nLakukan terus sampai konflik ter resolve semua,\n\n\nBisa dicek dengan perintah \ngit status\n tidak lagi menunjukkan ada konflik.\n\n\n\n\n\n\n\n\nPush ke remote feature branch\n\n\n\n\nSetelah commit baru dibuat di lokal, maka saatnya untuk push ke remote feature branch.\n\n\n\n\n~$ git push origin nama-fitur\n\n\n\n\n\n\nPush ke fitur branch boleh dilakukan kapan saja, misal:\n\n\nuntuk membuat backup data di server\n\n\nketika fitur sudah selesai dan akan dilakukan \nmerge request\n\n\ndengan catatan: tiap commit jelas melakukan apa, dan tercatat di \nCOMMIT_EDITMSG\n, sehingga keterangannya dapat dibaca dengan perintah \ngit log",
+            "title": "Development"
+        },
+        {
+            "location": "/git/development/#flow",
+            "text": "Keterangan: flow merge request dan pengerjaan fitur",
+            "title": "Flow"
+        },
+        {
+            "location": "/git/development/#fetch-rebase-master",
+            "text": "Pastikan repo lokal  clean , tidak ada perubahan yang belum di commit. Cek status repo lokal dengan perintah:   ~$ git status   Cek dan pastikan ada di branch master dengan perintah   ~$ git branch   Kalau belum, pindah ke branch  master  menggunakan perintah:   ~$ git checkout master   Fetch dan rebase, gunakan perintah:   ~$ git pull --rebase origin master",
+            "title": "Fetch &amp; Rebase Master"
+        },
+        {
+            "location": "/git/development/#buat-branch-baru-dan-checkout-di-lokal",
+            "text": "Buat branch baru dengan menggunakan perintah   ~$ git checkout -b nama-fitur",
+            "title": "Buat branch baru dan checkout di lokal"
+        },
+        {
+            "location": "/git/development/#edit-file-commit-lokal",
+            "text": "Lakukan edit pada file yang dikerjakan, ketika sudah selesai satu fitur lakukan commit   ~$ git add nama_file #menambahkan nama_file yang akan di commit\n~$ git commit #commit di repo lokal  atau jika akan menambahkan semua file yang sudah di edit untuk di commit:  ~$ git add . #menambahkan semua yang telah di edit untuk di commit\n~$ git commit #commit di repo lokal    Akan secara otomatis muncul text editor untuk menuliskan  COMMIT_EDITMSG , yaitu keterangan commit, berikan keterangan singkat dan jelas mengenai apa yang diubah di dalam commit tersebut, misal deskripsi fitur atau deskripsi bug yang di-solve.    Lakukan rebase lagi memastikan repo lokal terupdate.    ~$ git pull --rebase origin master",
+            "title": "Edit file &amp; commit lokal"
+        },
+        {
+            "location": "/git/development/#bila-terjadi-konflik",
+            "text": "Ketika proses rebase, ada kemungkinan terjadi conflict jika ada update di branch  master  di file yang sama dengan local feature branch.   Keterangan:   File warna hijau adalah file yang sudah berhasil di 3-way merge secara otomatis oleh git, atau yang sudah di-resolve konfliknya secara manual dan dimasukkan ke commit stage dengan  git add nama_file  File warna merah adalah file yang di dalamnya masih ada konflik yang belum di-resolve.  Status konflik bisa dicek dengan perintah  git status .   Jika konflik terjadi, maka:   Lakukan resolve conflict secara manual di lokal (untuk file yang di highlight warna merah).  Gunakan perintah  git add nama-file-konflik  atau  nama-file-konflik  bisa diganti dengan  .  jika akan memasukkan semua file yang sudah di-resolve.  Kemudian gunakan perintah  git rebase --continue  untuk melanjutkan proses rebase.  Lakukan terus sampai konflik ter resolve semua,  Bisa dicek dengan perintah  git status  tidak lagi menunjukkan ada konflik.",
+            "title": "Bila terjadi konflik"
+        },
+        {
+            "location": "/git/development/#push-ke-remote-feature-branch",
+            "text": "Setelah commit baru dibuat di lokal, maka saatnya untuk push ke remote feature branch.   ~$ git push origin nama-fitur   Push ke fitur branch boleh dilakukan kapan saja, misal:  untuk membuat backup data di server  ketika fitur sudah selesai dan akan dilakukan  merge request  dengan catatan: tiap commit jelas melakukan apa, dan tercatat di  COMMIT_EDITMSG , sehingga keterangannya dapat dibaca dengan perintah  git log",
+            "title": "Push ke remote feature branch"
+        },
+        {
+            "location": "/git/mergerequest/",
+            "text": "Status\n\n\n\n\nWIP (work in progress)\n\n\nMerge Request bisa dilakukan pada saat fitur sedang dikerjakan\n\n\nBelum siap di merge\n\n\nUntuk menandai merge request WIP, bisa dengan menambahkan keterangan \n[WIP]\n di judul merge request\n\n\n\n\n\n\nReady to merge (in review)\n\n\nReviewer yang di assign akan memeriksa kode yang di submit\n\n\nSelanjutnya akan di merge oleh reviewer/maintainer\n\n\nUntuk menandai merge rjquest siap di merge, maka hapus keterangan \n[WIP]\n di judul merge request (jika ada).\n\n\n\n\n\n\n\n\nMembuat Merge Request\n\n\n\n\nPastikan perubahan sudah di \ncommit\n dan di \npush\n ke remote feature branch. Mengikuti langkah yang tertulis di \nsini\n\n\nBuka halaman web repository yang akan dibuat merge request\n\n\nkemudian pilih tab \nMerge Request\n\n\n\n\n\n\n\n\nBeri judul dan isi keterangan merge request\n\n\nBila merge request yang dibuat belum selesai (on progress) maka di judul diberi flag \n[WIP]\n\n\n\n\n\n\nAssign reviewer/maintainer\n\n\nPastikan source branch menunjukkan branch fitur\n\n\nPastikan target branch menunjukkan branch master\n\n\nKlik \nCreate Merge Request\n\n\n\n\nReview dan revisi\n\n\n\n\nReviewer dan developer (atau siapa saja yang memiliki akses ke repo) dapat memberikan komentar di file yang berubah.\n\n\nApabila membutuhkan revisi, maka developer akan diberi informasi oleh reviewer untuk melakukan revisi.\n\n\nSelesai melakukan revisi, developer akan melakukan \ncommit\n dan \npush\n ke feature branch lagi, seperti ditunjukkan di flow \nini\n.\n\n\nHapus status \n[WIP]\n dari judul merge request.\n\n\nFeature branch siap untuk di \nmerge\n ke master branch.\n\n\n\n\nSelesai\n\n\n\n\nBila merge request sudah di merge oleh maintainer, maka developer dapat mengupdate branch master lokal, atau branch fitur lain yang sedang dikerjakan dengan metode \nfetch-rebase\n\n\nUntuk mengerjakan fitur lain, tidak perlu menunggu review selesai, cukup ganti branch ke branch lain yang akan dikerjakan.",
+            "title": "Merge Request"
+        },
+        {
+            "location": "/git/mergerequest/#status",
+            "text": "WIP (work in progress)  Merge Request bisa dilakukan pada saat fitur sedang dikerjakan  Belum siap di merge  Untuk menandai merge request WIP, bisa dengan menambahkan keterangan  [WIP]  di judul merge request    Ready to merge (in review)  Reviewer yang di assign akan memeriksa kode yang di submit  Selanjutnya akan di merge oleh reviewer/maintainer  Untuk menandai merge rjquest siap di merge, maka hapus keterangan  [WIP]  di judul merge request (jika ada).",
+            "title": "Status"
+        },
+        {
+            "location": "/git/mergerequest/#membuat-merge-request",
+            "text": "Pastikan perubahan sudah di  commit  dan di  push  ke remote feature branch. Mengikuti langkah yang tertulis di  sini  Buka halaman web repository yang akan dibuat merge request  kemudian pilih tab  Merge Request     Beri judul dan isi keterangan merge request  Bila merge request yang dibuat belum selesai (on progress) maka di judul diberi flag  [WIP]    Assign reviewer/maintainer  Pastikan source branch menunjukkan branch fitur  Pastikan target branch menunjukkan branch master  Klik  Create Merge Request",
+            "title": "Membuat Merge Request"
+        },
+        {
+            "location": "/git/mergerequest/#review-dan-revisi",
+            "text": "Reviewer dan developer (atau siapa saja yang memiliki akses ke repo) dapat memberikan komentar di file yang berubah.  Apabila membutuhkan revisi, maka developer akan diberi informasi oleh reviewer untuk melakukan revisi.  Selesai melakukan revisi, developer akan melakukan  commit  dan  push  ke feature branch lagi, seperti ditunjukkan di flow  ini .  Hapus status  [WIP]  dari judul merge request.  Feature branch siap untuk di  merge  ke master branch.",
+            "title": "Review dan revisi"
+        },
+        {
+            "location": "/git/mergerequest/#selesai",
+            "text": "Bila merge request sudah di merge oleh maintainer, maka developer dapat mengupdate branch master lokal, atau branch fitur lain yang sedang dikerjakan dengan metode  fetch-rebase  Untuk mengerjakan fitur lain, tidak perlu menunggu review selesai, cukup ganti branch ke branch lain yang akan dikerjakan.",
+            "title": "Selesai"
+        },
+        {
+            "location": "/git/merge/",
+            "text": "Merge ke Master\n\n\nMerge ke master branch dilakukan oleh maintainer, untuk memastikan minimal konflik di repository, terutama jika developer lebih dari 1 orang.\n\n\nLocal Merge (disarankan)\n\n\nLocal merge disarankan karena kita dapat melakukan merge \nfast forward\n, sehingga tidak perlu membuat \nmerge commit\n kosong yang dapat mengakibatkan merge bubble, yang membuat kompleks ketika kita akan melakukan tracing bug di history commit (\nbisect\n).\n\n\nFetch\n\n\nFetch, kemudian checkout feature branch di lokal\n\n\n~$ git fetch\n~$ git checkout -b nama-fitur origin/nama-fitur\n\n\n\n\nCheckout dan Merge\n\n\nPastikan master sudah terupdate dengan remote master seperti disebutkan di \nsini\n. Kemudian lakukan merge branch feature.\n\n\n~$ git checkout master\n~$ git merge nama-fitur\n\n\n\n\nPush ke remote master\n\n\n~$ git push origin master\n\n\n\n\nRemote Merge (apabila terpaksa)\n\n\nRemote merge kurang disarankan karena di Codebase tidak ada opsi merge dengan \nfast forward\n, sehingga mau tidak mau akan terbentuk merge bubble.\n\n\nStep by step\n\n\n\n\nBuka merge request yang akan di merge\n\n\nKlik tombol \nPerform Merge",
+            "title": "Merge"
+        },
+        {
+            "location": "/git/merge/#merge-ke-master",
+            "text": "Merge ke master branch dilakukan oleh maintainer, untuk memastikan minimal konflik di repository, terutama jika developer lebih dari 1 orang.",
+            "title": "Merge ke Master"
+        },
+        {
+            "location": "/git/merge/#local-merge-disarankan",
+            "text": "Local merge disarankan karena kita dapat melakukan merge  fast forward , sehingga tidak perlu membuat  merge commit  kosong yang dapat mengakibatkan merge bubble, yang membuat kompleks ketika kita akan melakukan tracing bug di history commit ( bisect ).",
+            "title": "Local Merge (disarankan)"
+        },
+        {
+            "location": "/git/merge/#fetch",
+            "text": "Fetch, kemudian checkout feature branch di lokal  ~$ git fetch\n~$ git checkout -b nama-fitur origin/nama-fitur",
+            "title": "Fetch"
+        },
+        {
+            "location": "/git/merge/#checkout-dan-merge",
+            "text": "Pastikan master sudah terupdate dengan remote master seperti disebutkan di  sini . Kemudian lakukan merge branch feature.  ~$ git checkout master\n~$ git merge nama-fitur",
+            "title": "Checkout dan Merge"
+        },
+        {
+            "location": "/git/merge/#push-ke-remote-master",
+            "text": "~$ git push origin master",
+            "title": "Push ke remote master"
+        },
+        {
+            "location": "/git/merge/#remote-merge-apabila-terpaksa",
+            "text": "Remote merge kurang disarankan karena di Codebase tidak ada opsi merge dengan  fast forward , sehingga mau tidak mau akan terbentuk merge bubble.",
+            "title": "Remote Merge (apabila terpaksa)"
+        },
+        {
+            "location": "/git/merge/#step-by-step",
+            "text": "Buka merge request yang akan di merge  Klik tombol  Perform Merge",
+            "title": "Step by step"
+        },
+        {
+            "location": "/git/tag/",
+            "text": "Apa Itu Tag?\n\n\nTag digunakan untuk menandai salah satu \ncommit\n di repository. Tag biasanya digunakan untuk menandai apabila:\n\n\n\n\nAplikasi siap untuk di release\n\n\nAda hotfix di versi aplikasi yang sudah di release\n\n\n\n\nTag bersifat unik dalam satu repository, jadi kita dapat melakukan tag di branch manapun (tidak harus di branch master) dan sistem git tetap dapat me-referensi ke tag tersebut.\n\n\nReferensi lebih lanjut dapat dilihat di \nsini\n.\n\n\nRelease Tag\n\n\n\n\nKetika aplikasi siap untuk di-release dan akan diberi nomor versi \nv0.1\n, maka commit yang siap di-release dapat ditandai dengan perintah\n\n\n\n\n~$ git tag -a v0.1\n\n\n\n\n\n\nBerikan keterangan release untuk tag tersebut (editor akan muncul secara otomatis)\n\n\nTag tersebut baru akan tertulis di repo lokal, untuk menyimpannya di remote server harus dilakukan\n\n\n\n\n~$ git push origin --tags\n\n\n\n\nHotfix Tag\n\n\nHotfix adalah bugfix di mana perubahan yang dilakukan harus segera dimasukkan ke production (tidak bisa menunggu next feature release).\n\n\nBuat branch hotfix\n\n\nKetika harus dilakukan hotfix maka harus dilakukan branching dengan basis diambil dari release terakhir, yang kita ketahui dari tag yang dibuat ketika release.\n\n\n~$ git tag #perintah untuk mengecek tag yang sudah ada\nv0.1\nv0.2\n~$ git checkout -b hotfix0.2 v0.2# membuat branch baru dengan nama hotfix0.2 dari basis tag v0.2\n\n\n\n\nPada posisi ini versi source code adalah sama dengan release terakhir yang di tag di \nv0.2\n. Sehingga kita bisa edit versi yang sama dengan versi yang sudah di release (production).\n\n\nLakukan edit yang diperlukan\n\n\nLakukan edit dan commit seperti di \npost sebelumnya\n.\n\n\nLakukan test\n\n\nTest aplikasi di tier staging (sebelum production).\n\n\nTambahkan tag hotfix\n\n\n\n\nSetelah lolos tes, maka dapat dilakukan tagging untuk versi hotfix.\n\n\nCara melakukannya sama dengan di \nrelease tag\n. Hanya berbeda di penomoran versi.\n\n\nMisal pada kasus ini, kita increment di belakang versi release \n.1\n, sehingga dari \nv0.2\n menjadi \nv0.2.1\n.",
+            "title": "Tag"
+        },
+        {
+            "location": "/git/tag/#apa-itu-tag",
+            "text": "Tag digunakan untuk menandai salah satu  commit  di repository. Tag biasanya digunakan untuk menandai apabila:   Aplikasi siap untuk di release  Ada hotfix di versi aplikasi yang sudah di release   Tag bersifat unik dalam satu repository, jadi kita dapat melakukan tag di branch manapun (tidak harus di branch master) dan sistem git tetap dapat me-referensi ke tag tersebut.  Referensi lebih lanjut dapat dilihat di  sini .",
+            "title": "Apa Itu Tag?"
+        },
+        {
+            "location": "/git/tag/#release-tag",
+            "text": "Ketika aplikasi siap untuk di-release dan akan diberi nomor versi  v0.1 , maka commit yang siap di-release dapat ditandai dengan perintah   ~$ git tag -a v0.1   Berikan keterangan release untuk tag tersebut (editor akan muncul secara otomatis)  Tag tersebut baru akan tertulis di repo lokal, untuk menyimpannya di remote server harus dilakukan   ~$ git push origin --tags",
+            "title": "Release Tag"
+        },
+        {
+            "location": "/git/tag/#hotfix-tag",
+            "text": "Hotfix adalah bugfix di mana perubahan yang dilakukan harus segera dimasukkan ke production (tidak bisa menunggu next feature release).",
+            "title": "Hotfix Tag"
+        },
+        {
+            "location": "/git/tag/#buat-branch-hotfix",
+            "text": "Ketika harus dilakukan hotfix maka harus dilakukan branching dengan basis diambil dari release terakhir, yang kita ketahui dari tag yang dibuat ketika release.  ~$ git tag #perintah untuk mengecek tag yang sudah ada\nv0.1\nv0.2\n~$ git checkout -b hotfix0.2 v0.2# membuat branch baru dengan nama hotfix0.2 dari basis tag v0.2  Pada posisi ini versi source code adalah sama dengan release terakhir yang di tag di  v0.2 . Sehingga kita bisa edit versi yang sama dengan versi yang sudah di release (production).",
+            "title": "Buat branch hotfix"
+        },
+        {
+            "location": "/git/tag/#lakukan-edit-yang-diperlukan",
+            "text": "Lakukan edit dan commit seperti di  post sebelumnya .",
+            "title": "Lakukan edit yang diperlukan"
+        },
+        {
+            "location": "/git/tag/#lakukan-test",
+            "text": "Test aplikasi di tier staging (sebelum production).",
+            "title": "Lakukan test"
+        },
+        {
+            "location": "/git/tag/#tambahkan-tag-hotfix",
+            "text": "Setelah lolos tes, maka dapat dilakukan tagging untuk versi hotfix.  Cara melakukannya sama dengan di  release tag . Hanya berbeda di penomoran versi.  Misal pada kasus ini, kita increment di belakang versi release  .1 , sehingga dari  v0.2  menjadi  v0.2.1 .",
+            "title": "Tambahkan tag hotfix"
+        }
+    ]
+}

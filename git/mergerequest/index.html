@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Zuragan">
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Merge Request - Development Best Practices</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Merge Request";
+    var mkdocs_page_input_path = "git/mergerequest.md";
+    var mkdocs_page_url = "/git/mergerequest/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Development Best Practices</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../..">Beranda</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Penggunaan Git</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../rule/">Basic Rule</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../concept/">Konsep</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../development/">Development</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">Merge Request</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#status">Status</a></li>
+    
+
+    <li class="toctree-l3"><a href="#membuat-merge-request">Membuat Merge Request</a></li>
+    
+
+    <li class="toctree-l3"><a href="#review-dan-revisi">Review dan revisi</a></li>
+    
+
+    <li class="toctree-l3"><a href="#selesai">Selesai</a></li>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../merge/">Merge</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../tag/">Tag</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Development Best Practices</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Penggunaan Git &raquo;</li>
+        
+      
+    
+    <li>Merge Request</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="status">Status</h1>
+<ul>
+<li>WIP (work in progress)<ul>
+<li>Merge Request bisa dilakukan pada saat fitur sedang dikerjakan</li>
+<li>Belum siap di merge</li>
+<li>Untuk menandai merge request WIP, bisa dengan menambahkan keterangan <code>[WIP]</code> di judul merge request</li>
+</ul>
+</li>
+<li>Ready to merge (in review)<ul>
+<li>Reviewer yang di assign akan memeriksa kode yang di submit</li>
+<li>Selanjutnya akan di merge oleh reviewer/maintainer</li>
+<li>Untuk menandai merge rjquest siap di merge, maka hapus keterangan <code>[WIP]</code> di judul merge request (jika ada).</li>
+</ul>
+</li>
+</ul>
+<h1 id="membuat-merge-request">Membuat Merge Request</h1>
+<ul>
+<li>Pastikan perubahan sudah di <code>commit</code> dan di <code>push</code> ke remote feature branch. Mengikuti langkah yang tertulis di <a href="../development/#push-ke-remote-feature-branch">sini</a></li>
+<li>Buka halaman web repository yang akan dibuat merge request</li>
+<li>kemudian pilih tab <em>Merge Request</em></li>
+</ul>
+<p><img alt="Zuragan create merge request" src="../../img/zuragan_create_merge_request.gif" /></p>
+<ul>
+<li>Beri judul dan isi keterangan merge request<ul>
+<li>Bila merge request yang dibuat belum selesai (on progress) maka di judul diberi flag <code>[WIP]</code></li>
+</ul>
+</li>
+<li>Assign reviewer/maintainer</li>
+<li>Pastikan source branch menunjukkan branch fitur</li>
+<li>Pastikan target branch menunjukkan branch master</li>
+<li>Klik <code>Create Merge Request</code></li>
+</ul>
+<h1 id="review-dan-revisi">Review dan revisi</h1>
+<ul>
+<li>Reviewer dan developer (atau siapa saja yang memiliki akses ke repo) dapat memberikan komentar di file yang berubah.</li>
+<li>Apabila membutuhkan revisi, maka developer akan diberi informasi oleh reviewer untuk melakukan revisi.</li>
+<li>Selesai melakukan revisi, developer akan melakukan <a href="../development/#edit-file-commit-lokal">commit</a> dan <a href="../development/#push-ke-remote-feature-branch">push</a> ke feature branch lagi, seperti ditunjukkan di flow <a href="../development/#flow">ini</a>.</li>
+<li>Hapus status <code>[WIP]</code> dari judul merge request.</li>
+<li>Feature branch siap untuk di <a href="../merge/">merge</a> ke master branch.</li>
+</ul>
+<h1 id="selesai">Selesai</h1>
+<ul>
+<li>Bila merge request sudah di merge oleh maintainer, maka developer dapat mengupdate branch master lokal, atau branch fitur lain yang sedang dikerjakan dengan metode <a href="../development/#fetch-rebase-master">fetch-rebase</a></li>
+<li>Untuk mengerjakan fitur lain, tidak perlu menunggu review selesai, cukup ganti branch ke branch lain yang akan dikerjakan.</li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../merge/" class="btn btn-neutral float-right" title="Merge">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../development/" class="btn btn-neutral" title="Development"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../development/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../merge/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/require.js"></script>
+      <script src="../../search/search.js"></script>
+
+</body>
+</html>

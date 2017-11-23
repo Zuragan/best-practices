@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Zuragan">
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Development - Development Best Practices</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Development";
+    var mkdocs_page_input_path = "git/development.md";
+    var mkdocs_page_url = "/git/development/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Development Best Practices</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../..">Beranda</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Penggunaan Git</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../rule/">Basic Rule</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../concept/">Konsep</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">Development</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#flow">Flow</a></li>
+    
+
+    <li class="toctree-l3"><a href="#fetch-rebase-master">Fetch &amp; Rebase Master</a></li>
+    
+
+    <li class="toctree-l3"><a href="#buat-branch-baru-dan-checkout-di-lokal">Buat branch baru dan checkout di lokal</a></li>
+    
+
+    <li class="toctree-l3"><a href="#edit-file-commit-lokal">Edit file &amp; commit lokal</a></li>
+    
+
+    <li class="toctree-l3"><a href="#bila-terjadi-konflik">Bila terjadi konflik</a></li>
+    
+
+    <li class="toctree-l3"><a href="#push-ke-remote-feature-branch">Push ke remote feature branch</a></li>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../mergerequest/">Merge Request</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../merge/">Merge</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../tag/">Tag</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Development Best Practices</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Penggunaan Git &raquo;</li>
+        
+      
+    
+    <li>Development</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="flow">Flow</h1>
+<p><img alt="Workflow chart" src="../../img/zuragan_git_workflow.jpg" /></p>
+<p><em>Keterangan: flow merge request dan pengerjaan fitur</em></p>
+<h1 id="fetch-rebase-master">Fetch &amp; Rebase Master</h1>
+<ul>
+<li>Pastikan repo lokal <em>clean</em>, tidak ada perubahan yang belum di commit. Cek status repo lokal dengan perintah:</li>
+</ul>
+<pre><code class="sh">~$ git status
+</code></pre>
+
+<ul>
+<li>Cek dan pastikan ada di branch master dengan perintah</li>
+</ul>
+<pre><code class="sh">~$ git branch
+</code></pre>
+
+<ul>
+<li>Kalau belum, pindah ke branch <code>master</code> menggunakan perintah:</li>
+</ul>
+<pre><code class="sh">~$ git checkout master
+</code></pre>
+
+<ul>
+<li>Fetch dan rebase, gunakan perintah:</li>
+</ul>
+<pre><code class="sh">~$ git pull --rebase origin master
+</code></pre>
+
+<h1 id="buat-branch-baru-dan-checkout-di-lokal">Buat branch baru dan checkout di lokal</h1>
+<ul>
+<li>Buat branch baru dengan menggunakan perintah</li>
+</ul>
+<pre><code class="sh">~$ git checkout -b nama-fitur
+</code></pre>
+
+<h1 id="edit-file-commit-lokal">Edit file &amp; commit lokal</h1>
+<ul>
+<li>Lakukan edit pada file yang dikerjakan, ketika sudah selesai satu fitur lakukan commit</li>
+</ul>
+<pre><code class="sh">~$ git add nama_file #menambahkan nama_file yang akan di commit
+~$ git commit #commit di repo lokal
+</code></pre>
+
+<p>atau jika akan menambahkan semua file yang sudah di edit untuk di commit:</p>
+<pre><code class="sh">~$ git add . #menambahkan semua yang telah di edit untuk di commit
+~$ git commit #commit di repo lokal
+</code></pre>
+
+<ul>
+<li>
+<p>Akan secara otomatis muncul text editor untuk menuliskan <code>COMMIT_EDITMSG</code>, yaitu keterangan commit, berikan keterangan singkat dan jelas mengenai apa yang diubah di dalam commit tersebut, misal deskripsi fitur atau deskripsi bug yang di-solve.</p>
+</li>
+<li>
+<p>Lakukan rebase lagi memastikan repo lokal terupdate.</p>
+</li>
+</ul>
+<pre><code class="sh">~$ git pull --rebase origin master
+</code></pre>
+
+<h1 id="bila-terjadi-konflik">Bila terjadi konflik</h1>
+<p>Ketika proses rebase, ada kemungkinan terjadi conflict jika ada update di branch <code>master</code> di file yang sama dengan local feature branch.</p>
+<p><img alt="Contoh konflik" src="http://bkulyk.github.io/git-rebase-talk/img/conflict-1.png" /></p>
+<p>Keterangan:</p>
+<ul>
+<li>File warna hijau adalah file yang sudah berhasil di 3-way merge secara otomatis oleh git, atau yang sudah di-resolve konfliknya secara manual dan dimasukkan ke commit stage dengan <code>git add nama_file</code></li>
+<li>File warna merah adalah file yang di dalamnya masih ada konflik yang belum di-resolve.</li>
+<li>Status konflik bisa dicek dengan perintah <code>git status</code>.</li>
+</ul>
+<p>Jika konflik terjadi, maka:</p>
+<ul>
+<li>Lakukan resolve conflict secara manual di lokal (untuk file yang di highlight warna merah).</li>
+<li>Gunakan perintah <code>git add nama-file-konflik</code> atau <code>nama-file-konflik</code> bisa diganti dengan <code>.</code> jika akan memasukkan semua file yang sudah di-resolve.</li>
+<li>Kemudian gunakan perintah <code>git rebase --continue</code> untuk melanjutkan proses rebase.</li>
+<li>Lakukan terus sampai konflik ter resolve semua,<ul>
+<li>Bisa dicek dengan perintah <code>git status</code> tidak lagi menunjukkan ada konflik.</li>
+</ul>
+</li>
+</ul>
+<h1 id="push-ke-remote-feature-branch">Push ke remote feature branch</h1>
+<ul>
+<li>Setelah commit baru dibuat di lokal, maka saatnya untuk push ke remote feature branch.</li>
+</ul>
+<pre><code class="sh">~$ git push origin nama-fitur
+</code></pre>
+
+<ul>
+<li>Push ke fitur branch boleh dilakukan kapan saja, misal:<ul>
+<li>untuk membuat backup data di server</li>
+<li>ketika fitur sudah selesai dan akan dilakukan <a href="../mergerequest/">merge request</a></li>
+<li>dengan catatan: tiap commit jelas melakukan apa, dan tercatat di <code>COMMIT_EDITMSG</code>, sehingga keterangannya dapat dibaca dengan perintah <code>git log</code></li>
+</ul>
+</li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../mergerequest/" class="btn btn-neutral float-right" title="Merge Request">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../concept/" class="btn btn-neutral" title="Konsep"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../concept/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../mergerequest/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/require.js"></script>
+      <script src="../../search/search.js"></script>
+
+</body>
+</html>

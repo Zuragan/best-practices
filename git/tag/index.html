@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Zuragan">
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Tag - Development Best Practices</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Tag";
+    var mkdocs_page_input_path = "git/tag.md";
+    var mkdocs_page_url = "/git/tag/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Development Best Practices</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../..">Beranda</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Penggunaan Git</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../rule/">Basic Rule</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../concept/">Konsep</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../development/">Development</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../mergerequest/">Merge Request</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../merge/">Merge</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">Tag</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#apa-itu-tag">Apa Itu Tag?</a></li>
+    
+
+    <li class="toctree-l3"><a href="#release-tag">Release Tag</a></li>
+    
+
+    <li class="toctree-l3"><a href="#hotfix-tag">Hotfix Tag</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#buat-branch-hotfix">Buat branch hotfix</a></li>
+        
+            <li><a class="toctree-l4" href="#lakukan-edit-yang-diperlukan">Lakukan edit yang diperlukan</a></li>
+        
+            <li><a class="toctree-l4" href="#lakukan-test">Lakukan test</a></li>
+        
+            <li><a class="toctree-l4" href="#tambahkan-tag-hotfix">Tambahkan tag hotfix</a></li>
+        
+        </ul>
+    
+
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Development Best Practices</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Penggunaan Git &raquo;</li>
+        
+      
+    
+    <li>Tag</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="apa-itu-tag">Apa Itu Tag?</h1>
+<p>Tag digunakan untuk menandai salah satu <code>commit</code> di repository. Tag biasanya digunakan untuk menandai apabila:</p>
+<ul>
+<li>Aplikasi siap untuk di release</li>
+<li>Ada hotfix di versi aplikasi yang sudah di release</li>
+</ul>
+<p>Tag bersifat unik dalam satu repository, jadi kita dapat melakukan tag di branch manapun (tidak harus di branch master) dan sistem git tetap dapat me-referensi ke tag tersebut.</p>
+<p>Referensi lebih lanjut dapat dilihat di <a href="https://git-scm.com/book/en/v2/Git-Basics-Tagging">sini</a>.</p>
+<h1 id="release-tag">Release Tag</h1>
+<ul>
+<li>Ketika aplikasi siap untuk di-release dan akan diberi nomor versi <code>v0.1</code>, maka commit yang siap di-release dapat ditandai dengan perintah</li>
+</ul>
+<pre><code class="sh">~$ git tag -a v0.1
+</code></pre>
+
+<ul>
+<li>Berikan keterangan release untuk tag tersebut (editor akan muncul secara otomatis)</li>
+<li>Tag tersebut baru akan tertulis di repo lokal, untuk menyimpannya di remote server harus dilakukan</li>
+</ul>
+<pre><code class="sh">~$ git push origin --tags
+</code></pre>
+
+<h1 id="hotfix-tag">Hotfix Tag</h1>
+<p>Hotfix adalah bugfix di mana perubahan yang dilakukan harus segera dimasukkan ke production (tidak bisa menunggu next feature release).</p>
+<h2 id="buat-branch-hotfix">Buat branch hotfix</h2>
+<p>Ketika harus dilakukan hotfix maka harus dilakukan branching dengan basis diambil dari release terakhir, yang kita ketahui dari tag yang dibuat ketika release.</p>
+<pre><code class="sh">~$ git tag #perintah untuk mengecek tag yang sudah ada
+v0.1
+v0.2
+~$ git checkout -b hotfix0.2 v0.2# membuat branch baru dengan nama hotfix0.2 dari basis tag v0.2
+</code></pre>
+
+<p>Pada posisi ini versi source code adalah sama dengan release terakhir yang di tag di <code>v0.2</code>. Sehingga kita bisa edit versi yang sama dengan versi yang sudah di release (production).</p>
+<h2 id="lakukan-edit-yang-diperlukan">Lakukan edit yang diperlukan</h2>
+<p>Lakukan edit dan commit seperti di <a href="../development/#edit-file-commit-lokal">post sebelumnya</a>.</p>
+<h2 id="lakukan-test">Lakukan test</h2>
+<p>Test aplikasi di tier staging (sebelum production).</p>
+<h2 id="tambahkan-tag-hotfix">Tambahkan tag hotfix</h2>
+<ul>
+<li>Setelah lolos tes, maka dapat dilakukan tagging untuk versi hotfix.</li>
+<li>Cara melakukannya sama dengan di <a href="#release-tag">release tag</a>. Hanya berbeda di penomoran versi.<ul>
+<li>Misal pada kasus ini, kita increment di belakang versi release <code>.1</code>, sehingga dari <code>v0.2</code> menjadi <code>v0.2.1</code>.</li>
+</ul>
+</li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../merge/" class="btn btn-neutral" title="Merge"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../merge/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/require.js"></script>
+      <script src="../../search/search.js"></script>
+
+</body>
+</html>
