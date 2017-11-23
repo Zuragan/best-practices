@@ -1,0 +1,14 @@
+site_name: 'Development Best Practices'
+site_description: 'Best Practice Coding @zuragan'
+site_author: 'Zuragan'
+theme: 'readthedocs'
+extra_css:
+pages:
+- Beranda: 'index.md'
+- Penggunaan Git:
+    - 'Basic Rule': 'git/rule.md'
+    - 'Konsep': 'git/concept.md'
+    - 'Development': 'git/development.md'
+    - 'Merge Request': 'git/mergerequest.md'
+    - 'Merge': 'git/merge.md'
+    - 'Tag': 'git/tag.md'
